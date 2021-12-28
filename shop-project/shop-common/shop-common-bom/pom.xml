@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>shop-common-bom</artifactId>
+    <groupId>com.kylin</groupId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>shop-common-bom</name>
+    <description>shop cloud parent</description>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <shop-common.version>${project.version}</shop-common.version>
+        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
+        <fastjson.version>1.2.78</fastjson.version>
+        <security.oauth.version>2.1.8.RELEASE</security.oauth.version>
+        <swagger.core.version>1.5.24</swagger.core.version>
+        <spring.checkstyle.plugin>0.0.29</spring.checkstyle.plugin>
+        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
+        <druid-spring.version>1.2.6</druid-spring.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.kylin</groupId>
+                <artifactId>shop-common-core</artifactId>
+                <version>${shop-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kylin</groupId>
+                <artifactId>shop-common-log</artifactId>
+                <version>${shop-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kylin</groupId>
+                <artifactId>shop-common-mybatis</artifactId>
+                <version>${shop-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kylin</groupId>
+                <artifactId>shop-common-security</artifactId>
+                <version>${shop-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kylin</groupId>
+                <artifactId>shop-common-swagger</artifactId>
+                <version>${shop-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kylin</groupId>
+                <artifactId>shop-common-feign</artifactId>
+                <version>${shop-common.version}</version>
+            </dependency>
+            <!--稳定版本，替代spring security bom内置-->
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>${security.oauth.version}</version>
+            </dependency>
+            <!--swagger 最新依赖内置版本-->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <!--fastjson 版本-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
+            <!-- excel 导入导出 -->
+            <dependency>
+                <groupId>com.pig4cloud.excel</groupId>
+                <artifactId>excel-spring-boot-starter</artifactId>
+                <version>${excel.version}</version>
+            </dependency>
+            <!--mybatis-plus-->
+            <dependency>
+                <groupId>com.pig4cloud.plugin</groupId>
+                <artifactId>oss-spring-boot-starter</artifactId>
+                <version>${oss.version}</version>
+            </dependency>
+            <!--orm 相关-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring.version}</version>
+            </dependency>
+            <!--web 模块-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+                <exclusions>
+                    <!--排除tomcat依赖-->
+                    <exclusion>
+                        <artifactId>spring-boot-starter-tomcat</artifactId>
+                        <groupId>org.springframework.boot</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!--代码格式插件，默认使用spring 规则-->
+            <plugin>
+                <groupId>io.spring.javaformat</groupId>
+                <artifactId>spring-javaformat-maven-plugin</artifactId>
+                <version>${spring.checkstyle.plugin}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
